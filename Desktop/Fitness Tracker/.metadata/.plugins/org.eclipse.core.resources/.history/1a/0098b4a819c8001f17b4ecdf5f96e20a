@@ -1,0 +1,5 @@
+package com.fitnessTracker;
+
+public interface UserRepository {
+
+}

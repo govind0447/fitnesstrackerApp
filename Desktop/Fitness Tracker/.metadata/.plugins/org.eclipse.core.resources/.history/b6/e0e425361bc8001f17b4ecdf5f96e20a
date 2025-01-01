@@ -1,0 +1,6 @@
+package com.fitnessTracker;
+
+@Repository
+public interface WorkoutPlanRepository extends JpaRepository<WorkoutPlan, Long> {
+	
+}

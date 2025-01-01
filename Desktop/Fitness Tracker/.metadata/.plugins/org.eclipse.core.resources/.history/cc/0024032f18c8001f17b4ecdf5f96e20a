@@ -1,0 +1,18 @@
+package com.fitnessTracker;
+
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
+    private String username;
+
+    @NotBlank
+    private String password;
+
+    private String role;
+    
+    // Getters and Setters
+}

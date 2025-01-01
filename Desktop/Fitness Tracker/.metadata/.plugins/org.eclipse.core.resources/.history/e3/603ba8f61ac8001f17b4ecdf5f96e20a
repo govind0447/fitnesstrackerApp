@@ -1,0 +1,26 @@
+package com.fitnessTracker;
+
+@WebMvcTest(UserController.class)
+public class UserControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private UserService userService;
+
+    @Test
+    void testCreateUser() throws Exception {
+        User user = new User();
+        user.setUsername("testuser");
+        user.setPassword("password");
+
+        Mockito.when(userService.saveUser(Mockito.any(User.class))).thenReturn(user);
+
+        mockMvc.perform(post("/api/users")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"username\":\"testuser\",\"password\":\"password\"}"))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.username").value("testuser"));
+    }
+}
